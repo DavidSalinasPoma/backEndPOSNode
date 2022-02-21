@@ -7,6 +7,9 @@ import userRoutes from '../routes/usuario.routes';
 // Importando el cors
 import cors from 'cors';
 
+// Para base de datos relacionales
+import db from '../db/conexion';
+
 
 
 class Server {
@@ -24,13 +27,30 @@ class Server {
         this.port = process.env.PORT || '8000';
 
         // Tiene que ejecutarse en ese orden
-        // 1.- This middlerares
+        // 1.- Base de datos
+        this.dbConection();
+
+        // 2.- This middlerares
         this.middlewares();
 
-        //2.- Definir mis rutas
+        // 3.- Definir mis rutas
         this.routes();
 
 
+    }
+
+    async dbConection() {
+        try {
+
+            await db.authenticate();
+            console.log('Data base esta online');
+
+
+        } catch (error) {
+
+            throw new Error(String(error));
+
+        }
     }
 
     // Para parsear el BODY

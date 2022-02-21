@@ -58,3 +58,9 @@ this.app.use(cors());
 # Crear la carpeta publica
 
 15.- Crear en el directorio raiz public
+
+# Instalación, conexion y configuración de MYSQL
+
+16.- Crear la base de datos en laragon
+17.- npm install --save sequelize
+18.- npm i mysql2
